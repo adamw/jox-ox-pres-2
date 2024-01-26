@@ -1,0 +1,15 @@
+plugins {
+    id 'com.softwaremill.pres.java-application-conventions'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.softwaremill.jox:core:0.0.7'
+}
+
+application {
+    mainClass = 'pres.App'
+}
