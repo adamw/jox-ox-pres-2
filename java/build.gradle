@@ -8,6 +8,8 @@ repositories {
 
 dependencies {
     implementation 'com.softwaremill.jox:core:0.0.7'
+    implementation platform("org.apache.pekko:pekko-bom_2.13:1.0.2")
+    implementation "org.apache.pekko:pekko-stream_2.13"
 }
 
 application {
