@@ -10,3 +10,5 @@ def timed[T](label: String)(t: => T): T =
 def sumUpTo(n: Int): Long = n.toLong * (n + 1) / 2
 
 val Max = 10_000_000
+
+val YesPlease = true

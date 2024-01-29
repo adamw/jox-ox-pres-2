@@ -3,7 +3,7 @@ package pres;
 public class S0030_What_to_keep {
     /*
 
-    RS characteristics:
+    Reactive streams characteristics:
     * backpressure
     * error handling
     * completion

@@ -3,7 +3,7 @@ package pres;
 public class S0300_Channels {
     /*
 
-    To build a streaming API on top, we need a basic data structure:
+    To build a streaming API on top, we need a concurrent data structure:
     * queue-like (send/receive)
     * can be closed:
       * completed
