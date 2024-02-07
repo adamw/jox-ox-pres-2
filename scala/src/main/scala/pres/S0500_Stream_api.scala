@@ -10,7 +10,10 @@ import scala.concurrent.duration.*
     Source
       .unfold(0)(i => Some(i + 1, i + 1))
       .throttle(1, 1.second)
-      .mapPar(4)(i => i * 3)
+      .mapPar(4) { i =>
+        val j = i * 3
+        j + 1
+      }
       .filter(i => i % 2 == 0)
       .zip(Source.unfold(0)(i => Some(i + 1, i + 1)))
       .foreach(println)
