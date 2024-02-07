@@ -15,8 +15,15 @@ public class S0100_Akka_simpler {
         try {
             for (int k=0; k<10; k++) {
                 timed("akka", () -> {
-                    var nats = Source.unfold(0, i -> (i > MAX) ? Optional.empty() : Optional.of(Pair.create(i + 1, i + 1)));
-                    var consumeWithFold = nats.runFold(Long.valueOf(0), Long::sum, system).toCompletableFuture().get();
+                    var nats = Source
+                            .unfold(0, i -> (i > MAX) ?
+                                    Optional.empty() :
+                                    Optional.of(Pair.create(i + 1, i + 1)));
+
+                    var consumeWithFold = nats
+                            .runFold(Long.valueOf(0), Long::sum, system)
+                            .toCompletableFuture()
+                            .get();
 
                     assert consumeWithFold == sumUpTo(MAX);
                     return null;

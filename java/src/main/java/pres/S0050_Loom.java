@@ -10,7 +10,8 @@ public class S0050_Loom {
             var threads = new Thread[10_000_000];
             var results = ConcurrentHashMap.newKeySet();
             for (int i=0; i<threads.length; i++) {
-                threads[i] = Thread.startVirtualThread(() -> results.add(0));
+                threads[i] = Thread
+                        .startVirtualThread(() -> results.add(0));
             }
 
             for (Thread thread : threads) {

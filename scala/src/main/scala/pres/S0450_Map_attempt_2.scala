@@ -1,11 +1,11 @@
 package pres
 
 import ox.channels.{Channel, ChannelClosed, Source}
-import ox.{Ox, fork, repeatWhile, supervised}
+import ox.{Ox, fork, forkDaemon, repeatWhile, supervised}
 
 def map2[T, U](ch: Source[T], f: T => U)(using Ox): Source[U] =
   val out = Channel[U]()
-  fork {
+  forkDaemon {
     repeatWhile {
       ch.receive() match
         case t: T @unchecked =>

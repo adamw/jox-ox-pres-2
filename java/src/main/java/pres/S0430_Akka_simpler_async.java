@@ -12,10 +12,16 @@ import static pres.Util.*;
 public class S0430_Akka_simpler_async {
     private static void test(int buffer, ActorSystem system) throws Exception {
         timed("akka(" + buffer + ")", () -> {
-            var nats = Source.unfold(0, i -> (i > MAX) ? Optional.empty() : Optional.of(Pair.create(i + 1, i + 1)));
+            var nats = Source
+                    .unfold(0, i -> (i > MAX) ?
+                            Optional.empty() :
+                            Optional.of(Pair.create(i + 1, i + 1)));
+
             var consumeWithFold = nats
                     .withAttributes(Attributes.asyncBoundary().and(Attributes.inputBuffer(buffer, buffer)))
-                    .runFold(Long.valueOf(0), Long::sum, system).toCompletableFuture().get();
+                    .runFold(Long.valueOf(0), Long::sum, system)
+                    .toCompletableFuture()
+                    .get();
 
             assert consumeWithFold == sumUpTo(MAX);
             return null;

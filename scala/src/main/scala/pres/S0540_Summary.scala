@@ -14,7 +14,8 @@ object S0540_Summary:
   - [Ox](https://github.com/softwaremill/ox)
   - [Jox](https://github.com/softwaremill/jox)
   - [ScalaTimes](https://scalatimes.com)
-  - [@adamwarski](https://twitter.com/adamwarski) [or](https://softwaremill.social/@adamwarski)
+  - [@adamwarski](https://twitter.com/adamwarski) 
+    [or](https://softwaremill.social/@adamwarski)
   - [SoftwareMill](https://softwaremill.com)
    */
 

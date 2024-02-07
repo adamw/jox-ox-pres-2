@@ -29,7 +29,11 @@ object S0530_Pros_and_cons {
    (-) buffer between every stage: more coarse-grained
    
    Other:
-   * all implementations are reactive: back-pressured, with error-handling, completion, asynchronous processing
+   * all implementations are reactive:
+     * back-pressured
+     * error-handling
+     * completion
+     * asynchronous processing
    * hot vs cold streams
 
    */

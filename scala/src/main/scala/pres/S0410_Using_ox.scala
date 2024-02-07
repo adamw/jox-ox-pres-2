@@ -9,7 +9,7 @@ def testUsingOx(buffer: Int): Unit =
       given StageCapacity = StageCapacity(buffer)
 
       val source: Source[Int] = Source.range(0, Max, 1)
-      val sum = source.fold(0L)(_ + _)
+      val sum = source.fold(0L)((a, b) => a+b)
 
       assert(sum == sumUpTo(Max))
     }
