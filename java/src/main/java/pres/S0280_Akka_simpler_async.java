@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import static pres.Util.*;
 
-public class S0430_Akka_simpler_async {
+public class S0280_Akka_simpler_async {
     private static void test(int buffer, ActorSystem system) throws Exception {
         timed("akka(" + buffer + ")", () -> {
             var nats = Source
