@@ -10,3 +10,5 @@ object S0515_Scalar:
   val To = LocalDate.of(2024, 3, 22)
 
   val Topics = List("Functional Programming", "Use-cases", "Scala Native", "Direct style Scala", "Macros", "Tooling")
+
+  val Discount = "10% with code"
