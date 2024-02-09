@@ -11,6 +11,7 @@ import scala.concurrent.duration.*
       .unfold(0)(i => Some(i + 1, i + 1))
       .throttle(1, 1.second)
       .mapPar(4) { i =>
+        Thread.sleep(5000)
         val j = i * 3
         j + 1
       }
