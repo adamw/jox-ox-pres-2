@@ -8,8 +8,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.scala-lang:scala3-library_3:3.3.1'
-    implementation 'com.softwaremill.ox:core_3:0.0.18'
+    implementation 'org.scala-lang:scala3-library_3:3.3.4'
+    implementation 'com.softwaremill.ox:core_3:0.5.1'
     implementation 'io.monix:monix_3:3.4.1'
 }
 

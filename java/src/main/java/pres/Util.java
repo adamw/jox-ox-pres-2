@@ -10,10 +10,4 @@ public class Util {
         System.out.println(label + " took: " + (endTime - startTime) + " ms");
         return result;
     }
-
-    public static long sumUpTo(int max) {
-        return ((long) max * (max + 1)) / 2;
-    }
-
-    public static int MAX = 10_000_000;
 }

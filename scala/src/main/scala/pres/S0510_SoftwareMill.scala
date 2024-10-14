@@ -8,7 +8,8 @@ object S0510_SoftwareMill:
   val ML_AI = true
   val DevOps = true
 
-  val Consulting: List[String] = List("Scala", "Java",
+  val Consulting: List[String] = List(
+    "Scala", "Java", "Kotlin", "Rust", "TypeScript",
     "Architecture", "Kafka", "Cassandra", "Distributed systems")
 
   val OpenSource_Top5: List[String] = List(
