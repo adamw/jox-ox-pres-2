@@ -15,19 +15,21 @@ object S0530_Pros_and_cons {
    (+) performance
    (+) easy to create new stages
    (+) syntax (suspended functions)
-   (+) functional/imperative APIs
+   (+) straightforward APIs
    (-) colored functions (suspend / normal)
    (-) stack traces
    (-) compile-time transformations + an additional runtime needed
 
    Ox:
-   (+) performance
+   (+) performance (channels)
    (+) easy to create new stages
    (+) no colored functions
    (+) stack traces
-   (+) functional/imperative APIs
    (+) no additional runtime needed
+   (+) functional/imperative APIs
+   (-) functional/imperative APIs
    (-) in development, no integrations yet
+   (-) not optimized
    (-) TBD
 
    All implementations are reactive:
