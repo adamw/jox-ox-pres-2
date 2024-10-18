@@ -1,16 +1,22 @@
 package pres
 
-import ox.supervised
+import ox.{pipe, supervised}
 import ox.channels.{Channel, ChannelClosed, selectOrClosed}
 import ox.flow.Flow
 import scala.concurrent.duration.*
 
 @main def demo1(): Unit =
   Flow
-    .fromValues(0, 1, 2, 3, 4)
-    .map(_ + 1)
-    .map(_ * 2)
-    .runForeach(println)
+    .fromValues(11, 24, 51, 76, 78, 9, 1, 44)
+    .map(_ + 3)
+    .filter(_ % 2 == 0)
+    .intersperse(5)
+    .mapStateful(() => 0) { (state, value) =>
+      val newState = state + value
+      (newState, newState)
+    }
+    .runToList()
+    .pipe(println)
 
 @main def demo2(): Unit =
   val ch = Channel.bufferedDefault[Int]
