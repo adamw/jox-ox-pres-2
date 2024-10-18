@@ -49,7 +49,7 @@ end demo2
   val errors = Channel.unlimited[Exception]
 
   Flow.usingEmit: emit =>
-    selectOrClosed(data, errors) match
+    selectOrClosed(errors, data) match
       case data.Received(i) =>
         if i % 2 == 0 then emit(i)
         else
