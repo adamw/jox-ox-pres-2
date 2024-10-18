@@ -1,8 +1,9 @@
 package pres
 
-import ox.{pipe, supervised}
+import ox.{forever, pipe, supervised}
 import ox.channels.{Channel, ChannelClosed, selectOrClosed}
 import ox.flow.Flow
+
 import scala.concurrent.duration.*
 
 @main def demo1(): Unit =
@@ -49,13 +50,14 @@ end demo2
   val errors = Channel.unlimited[Exception]
 
   Flow.usingEmit: emit =>
-    selectOrClosed(errors.receiveClause, data.receiveClause) match
-      case data.Received(i) =>
-        if i % 2 == 0 then emit(i)
-        else
-          emit(i)
-          emit(i + 1)
-      case errors.Received(e)     => throw e
-      case ChannelClosed.Done     => // end
-      case ChannelClosed.Error(e) => throw e
+    forever:
+      selectOrClosed(errors.receiveClause, data.receiveClause) match
+        case data.Received(i) =>
+          if i % 2 == 0 then emit(i)
+          else
+            emit(i)
+            emit(i + 1)
+        case errors.Received(e)     => throw e
+        case ChannelClosed.Done     => // end
+        case ChannelClosed.Error(e) => throw e
 end demo4
