@@ -1,6 +1,6 @@
 package pres
 
-import ox.{forever, pipe, supervised}
+import ox.{forever, pipe, sleep, supervised}
 import ox.channels.{Channel, ChannelClosed, selectOrClosed}
 import ox.flow.Flow
 
@@ -20,6 +20,26 @@ import scala.concurrent.duration.*
     .pipe(println)
 
 @main def demo2(): Unit =
+  val f1 = Flow.tick(1.second, "tick1")
+  val f2 = Flow.tick(2.seconds, "tick2")
+
+  f1.merge(f2).runForeach(println)
+
+@main def demo3(): Unit =
+  val f1 = Flow
+    .iterate(0)(_ + 1)
+    .tap(_ => sleep(1.second))
+    .map { i =>
+      if i > 3 then throw new RuntimeException("Boom!")
+      else i
+    }
+
+  val f2 = Flow.tick(500.millis, "tick")
+
+  f1.merge(f2).runForeach(println)
+end demo3
+
+@main def demo4(): Unit =
   val ch = Channel.bufferedDefault[Int]
   ch.send(10)
   ch.send(20)
@@ -37,15 +57,9 @@ import scala.concurrent.duration.*
     println(result.receiveOrClosed())
     println(result.receiveOrClosed())
     println(result.receiveOrClosed())
-end demo2
+end demo4
 
-@main def demo3(): Unit =
-  val f1 = Flow.tick(1.second, "tick1")
-  val f2 = Flow.tick(2.seconds, "tick2")
-
-  f1.merge(f2).runForeach(println)
-
-@main def demo4(): Unit =
+@main def demo5(): Unit =
   val data = Channel.bufferedDefault[Int]
   val errors = Channel.unlimited[Exception]
 
@@ -60,4 +74,4 @@ end demo2
         case errors.Received(e)     => throw e
         case ChannelClosed.Done     => // end
         case ChannelClosed.Error(e) => throw e
-end demo4
+end demo5
